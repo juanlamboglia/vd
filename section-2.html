@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinculación Digital - Información Económica y Financiera</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="custom-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Información Económica y Financiera</h1>
+        <ul class="timeline">
+            <li class="timeline-step" data-step="1" onclick="attemptNavigateToSection('section-1')"></li>
+            <li class="timeline-step active" data-step="2" onclick="attemptNavigateToSection('section-2')"></li>
+            <li class="timeline-step" data-step="3" onclick="attemptNavigateToSection('section-3')"></li>
+            <li class="timeline-step" data-step="4" onclick="attemptNavigateToSection('section-4')"></li>
+            <li class="timeline-step" data-step="5" onclick="attemptNavigateToSection('section-5')"></li>
+            <li class="timeline-step" data-step="6" onclick="attemptNavigateToSection('section-6')"></li>
+            <li class="timeline-step" data-step="7" onclick="attemptNavigateToSection('section-7')"></li>
+            <li class="timeline-step" data-step="8" onclick="attemptNavigateToSection('section-8')"></li>
+            <li class="timeline-step" data-step="9" onclick="attemptNavigateToSection('section-9')"></li>
+        </ul>
+        <form id="vinculacion-form" onsubmit="saveData(event)">
+            <div class="form-group-inline">
+                <label>¿Declara renta?</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="declara-renta" value="si" required onclick="toggleDeclaraRenta(true)"> <span></span>Sí
+                    </label>
+                    <label>
+                        <input type="radio" name="declara-renta" value="no" required onclick="toggleDeclaraRenta(false)"> <span></span>No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" id="declara-renta-si" style="display: none;">
+                <label for="declaracion-renta">Documento de declaración de renta</label>
+                <input type="file" id="declaracion-renta" name="declaracion-renta">
+            </div>
+            <div class="form-group" id="declara-renta-no" style="display: none;">
+                <label for="soporte-ingresos">Documento Soporte de Ingresos</label>
+                <input type="file" id="soporte-ingresos" name="soporte-ingresos">
+            </div>
+            <div class="form-group" id="formato-no-declarante" style="display: none;">
+                <label for="formato-n-declarante">Documento Formato No Declarante</label>
+                <input type="file" id="formato-n-declarante" name="formato-n-declarante">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="tipo-no-declarante" value="asalariados" required> <span></span>Asalariados
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo-no-declarante" value="independientes" required> <span></span>Independientes
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo-no-declarante" value="menores-ingresos" required> <span></span>Personas naturales de menores ingresos
+                    </label>
+                </div>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="ingreso-mensual">Valor Ingreso Mensual</label>
+                    <input type="text" id="ingreso-mensual" name="ingreso-mensual" required oninput="formatCurrency(this)" onblur="formatCurrency(this, true)" onfocus="removeFormatting(this)">
+                </div>
+                <div class="form-group">
+                    <label for="egreso-mensual">Valor Egreso Mensual</label>
+                    <input type="text" id="egreso-mensual" name="egreso-mensual" required oninput="formatCurrency(this)" onblur="formatCurrency(this, true)" onfocus="removeFormatting(this)">
+                </div>
+                <div class="form-group">
+                    <label for="activos">Valor Activos</label>
+                    <input type="text" id="activos" name="activos" required oninput="formatCurrency(this)" onblur="formatCurrency(this, true)" onfocus="removeFormatting(this)">
+                </div>
+                <div class="form-group">
+                    <label for="pasivos">Valor Pasivos</label>
+                    <input type="text" id="pasivos" name="pasivos" required oninput="formatCurrency(this)" onblur="formatCurrency(this, true)" onfocus="removeFormatting(this)">
+                </div>
+                <div class="form-group">
+                    <label for="patrimonio">Valor Patrimonio</label>
+                    <input type="text" id="patrimonio" name="patrimonio" readonly>
+                </div>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="origen-ingresos">Origen de Ingresos</label>
+                    <select id="origen-ingresos" name="origen-ingresos" required>
+                        <option value="Salario">Salario</option>
+                        <option value="Negocios">Negocios</option>
+                        <option value="Inversiones">Inversiones</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="detalle-ingresos">Recursos Provenientes de</label>
+                    <input type="text" id="detalle-ingresos" name="detalle-ingresos">
+                </div>
+                <div class="form-group">
+                    <label for="relacion">Relación con el Tercero</label>
+                    <input type="text" id="relacion" name="relacion" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-id-tercero">Tipo Id Tercero</label>
+                    <select id="tipo-id-tercero" name="tipo-id-tercero" required>
+                        <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="NIUP">NIUP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="documento-tercero">N° Documento Tercero</label>
+                    <input type="number" id="documento-tercero" name="documento-tercero" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre-tercero">Nombre del Tercero</label>
+                    <input type="text" id="nombre-tercero" name="nombre-tercero" required>
+                </div>
+                <div class="form-group">
+                    <label for="actividad-economica">Actividad Económica del Tercero</label>
+                    <select id="actividad-economica" name="actividad-economica" required>
+                        <option value="Rentista de Capital">Rentista de Capital</option>
+                        <option value="Religioso">Religioso</option>
+                        <option value="Profesional Independiente">Profesional Independiente</option>
+                        <option value="Técnico Independiente">Técnico Independiente</option>
+                        <option value="Comerciante">Comerciante</option>
+                        <option value="Transportador">Transportador</option>
+                        <option value="Actividades Agropecuarias">Actividades Agropecuarias</option>
+                        <option value="Servidor público">Servidor público</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ingresos-tercero">Valor Ingresos Mensuales del Tercero</label>
+                    <input type="text" id="ingresos-tercero" name="ingresos-tercero" required oninput="formatCurrency(this)" onblur="formatCurrency(this, true)" onfocus="removeFormatting(this)">
+                </div>
+                                <div class="form-group">
+                    <label for="codigo-ciiu">Código CIIU del Tercero</label>
+                    <select id="codigo-ciiu" name="codigo-ciiu" required>
+                        <option value="A0110">A0110 - Cultivo de cereales</option>
+                        <option value="B0510">B0510 - Extracción de hulla</option>
+                        <!-- Agrega aquí más opciones según tu lista -->
+                    </select>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn" onclick="attemptNavigateToSection('index')">Inicio</button>
+                <button type="button" class="btn" onclick="attemptNavigateToSection('section-1')">Volver</button>
+                <button type="submit" class="btn">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function navigateToSection(section) {
+            window.location.href = section + '.html';
+        }
+
+        function attemptNavigateToSection(section) {
+            const form = document.getElementById('vinculacion-form');
+            if (form.checkValidity()) {
+                saveData(null, section);
+            } else {
+                alert('Por favor, completa todos los campos obligatorios antes de continuar.');
+                highlightEmptyFields(form);
+            }
+        }
+
+        function highlightEmptyFields(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = 'red';
+                }
+            });
+        }
+
+        function toggleDeclaraRenta(declara) {
+            document.getElementById('declara-renta-si').style.display = declara ? 'block' : 'none';
+            document.getElementById('declara-renta-no').style.display = !declara ? 'block' : 'none';
+            document.getElementById('formato-no-declarante').style.display = !declara ? 'block' : 'none';
+        }
+
+        function showTooltip(field) {
+            document.getElementById('tooltip-' + field).style.display = 'block';
+        }
+
+        function hideTooltip(field) {
+            document.getElementById('tooltip-' + field).style.display = 'none';
+        }
+
+        
+
+        function saveData(event, nextSection = null) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            const formData = {
+                declaraRenta: document.querySelector('input[name="declara-renta"]:checked').value,
+                declaracionRenta: document.getElementById('declaracion-renta').files[0] ? document.getElementById('declaracion-renta').files[0].name : '',
+                soporteIngresos: document.getElementById('soporte-ingresos').files[0] ? document.getElementById('soporte-ingresos').files[0].name : '',
+                formatoNDeclarante: document.getElementById('formato-n-declarante').files[0] ? document.getElementById('formato-n-declarante').files[0].name : '',
+                tipoNoDeclarante: document.querySelector('input[name="tipo-no-declarante"]:checked') ? document.querySelector('input[name="tipo-no-declarante"]:checked').value : '',
+                ingresoMensual: removeFormattingFromValue(document.getElementById('ingreso-mensual').value),
+                egresoMensual: removeFormattingFromValue(document.getElementById('egreso-mensual').value),
+                activos: removeFormattingFromValue(document.getElementById('activos').value),
+                pasivos: removeFormattingFromValue(document.getElementById('pasivos').value),
+                patrimonio: removeFormattingFromValue(document.getElementById('patrimonio').value),
+                origenIngresos: document.getElementById('origen-ingresos').value,
+                detalleIngresos: document.getElementById('detalle-ingresos').value,
+                relacion: document.getElementById('relacion').value,
+                tipoIdTercero: document.getElementById('tipo-id-tercero').value,
+                documentoTercero: document.getElementById('documento-tercero').value,
+                nombreTercero: document.getElementById('nombre-tercero').value,
+                actividadEconomica: document.getElementById('actividad-economica').value,
+                ingresosTercero: removeFormattingFromValue(document.getElementById('ingresos-tercero').value),
+                codigoCiiu: document.getElementById('codigo-ciiu').value,
+            };
+
+            
+
+            localStorage.setItem('formDataSection2', JSON.stringify(formData));
+            alert('Datos guardados correctamente');
+
+            const completedSections = JSON.parse(localStorage.getItem('completedSections')) || [];
+            if (!completedSections.includes('section-2')) {
+                completedSections.push('section-2');
+                localStorage.setItem('completedSections', JSON.stringify(completedSections));
+            }
+
+            if (nextSection) {
+                navigateToSection(nextSection);
+            }
+        }
+
+        function loadData() {
+            const savedData = JSON.parse(localStorage.getItem('formDataSection2'));
+            if (savedData) {
+                document.querySelector(`input[name="declara-renta"][value="${savedData.declaraRenta}"]`).checked = true;
+                if (savedData.declaraRenta === 'si') {
+                    document.getElementById('declara-renta-si').style.display = 'block';
+                    document.getElementById('declara-renta-no').style.display = 'none';
+                    document.getElementById('formato-no-declarante').style.display = 'none';
+                } else {
+                    document.getElementById('declara-renta-no').style.display = 'block';
+                    document.getElementById('declara-renta-si').style.display = 'none';
+                    document.getElementById('formato-no-declarante').style.display = 'block';
+                }
+                // No se puede cargar archivos, solo nombres
+                document.getElementById('ingreso-mensual').value = formatNumber(savedData.ingresoMensual) || '';
+                document.getElementById('egreso-mensual').value = formatNumber(savedData.egresoMensual) || '';
+                document.getElementById('activos').value = formatNumber(savedData.activos) || '';
+                document.getElementById('pasivos').value = formatNumber(savedData.pasivos) || '';
+                document.getElementById('patrimonio').value = formatNumber(savedData.patrimonio) || '';
+                document.getElementById('origen-ingresos').value = savedData.origenIngresos || '';
+                document.getElementById('detalle-ingresos').value = savedData.detalleIngresos || '';
+                document.getElementById('relacion').value = savedData.relacion || '';
+                document.getElementById('tipo-id-tercero').value = savedData.tipoIdTercero || '';
+                document.getElementById('documento-tercero').value = savedData.documentoTercero || '';
+                document.getElementById('nombre-tercero').value = savedData.nombreTercero || '';
+                document.getElementById('actividad-economica').value = savedData.actividadEconomica || '';
+                document.getElementById('ingresos-tercero').value = formatNumber(savedData.ingresosTercero) || '';
+                document.getElementById('codigo-ciiu').value = savedData.codigoCiiu || '';
+            }
+        }
+
+        function formatCurrency(input, format = false) {
+            if (format) {
+                input.value = formatNumber(input.value);
+            } else {
+                input.value = input.value.replace(/\D/g, '');
+            }
+        }
+
+        function removeFormatting(input) {
+            input.value = input.value.replace(/\D/g, '');
+        }
+
+        function removeFormattingFromValue(value) {
+            return value.replace(/\D/g, '');
+        }
+
+        function formatNumber(value) {
+            if (!value) return '';
+            return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
+

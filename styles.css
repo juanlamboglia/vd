@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap');
+
+/* Estilos generales para el cuerpo y el contenedor principal */
+body {
+    font-family: 'SF Pro Display', sans-serif; /* Fuente de Apple */
+    background-color: #f8f9fa; /* Color de fondo claro */
+    margin: 0; /* Eliminar margen predeterminado */
+    padding: 0; /* Eliminar relleno predeterminado */
+    display: flex; /* Utilizar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    min-height: 100vh; /* Altura mínima de la ventana gráfica */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    'SF Pro Display', sans-serif; /* Fuente de Apple */
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px; /* Relleno interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    max-width: 1000px; /* Ancho máximo */
+    width: 100%; /* Ancho completo */
+    margin: 20px; /* Margen externo */
+}
+
+/* Estilos para encabezados */
+h1, h2 {
+    font-size: 24px; /* Tamaño de fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Alineación centrada */
+    font-weight: 600; /* Peso de fuente */
+}
+
+/* Estilos para grupos de formulario */
+.form-group {
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+/* Estilos para etiquetas de formulario */
+.form-group label {
+    display: block; /* Mostrar como bloque */
+    margin-bottom: 5px; /* Margen inferior */
+    font-weight: 600; /* Peso de fuente */
+}
+
+/* Estilos para entradas de formulario y selectores */
+.form-group input, .form-group select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Relleno interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluir borde y relleno en el ancho y alto */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+}
+
+/* Ajuste para resaltar campos */
+.form-group.resaltado input {
+    border: 2px solid #004085; /* Borde azul oscuro */
+    background-color: rgba(0, 64, 133, 0.05); /* Fondo azul claro con 5% de opacidad */
+    font-weight: bold; /* Fuente en negrita */
+    text-transform: lowercase !important; /* Convertir el texto a minúsculas con prioridad */
+}
+
+/* Estilos para botones de radio */
+.radio-group {
+    display: flex; /* Utilizar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    gap: 20px; /* Espacio entre elementos */
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+/* Estilos para etiquetas de radio */
+.radio-group label {
+    display: flex; /* Utilizar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    gap: 10px; /* Espacio entre elementos */
+    font-weight: 400; /* Peso de fuente */
+    cursor: pointer; /* Cursor de puntero */
+    padding: 5px 10px; /* Relleno interno */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+/* Ocultar botones de radio originales */
+.radio-group input[type="radio"] {
+    display: none; /* Ocultar */
+}
+
+/* Estilos para el indicador visual de radio */
+.radio-group input[type="radio"] + span {
+    display: inline-block; /* Mostrar como inline-block */
+    width: 16px; /* Ancho */
+    height: 16px; /* Altura */
+    border: 2px solid #ccc; /* Borde */
+    border-radius: 50%; /* Bordes redondeados */
+    margin-right: 10px; /* Margen derecho */
+    position: relative; /* Posicionamiento relativo */
+}
+
+/* Estilos para el estado seleccionado del radio */
+.radio-group input[type="radio"]:checked + span {
+    border-color: #007bff; /* Borde azul */
+    background-color: #007bff; /* Fondo azul */
+}
+
+/* Estilos para el indicador interno del radio seleccionado */
+.radio-group input[type="radio"]:checked + span::before {
+    content: ''; /* Contenido vacío */
+    display: block; /* Mostrar como bloque */
+    width: 6px; /* Ancho */
+    height: 6px; /* Altura */
+    border-radius: 50%; /* Bordes redondeados */
+    background-color: white; /* Fondo blanco */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar la posición */
+}
+
+/* Estilos para el hover en etiquetas de radio */
+.radio-group label:hover {
+    background-color: #f0f0f0; /* Fondo gris claro */
+}
+
+/* Estilos para el grupo de formulario en línea */
+.form-group-inline {
+    display: flex; /* Utilizar flexbox */
+    gap: 20px; /* Espacio entre elementos */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+}
+
+/* Estilos para los grupos de formulario dentro del grupo en línea */
+.form-group-inline .form-group {
+    flex: 1 1 48%; /* Flexibilidad y ancho mínimo */
+    min-width: 200px; /* Ancho mínimo */
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1200px) {
+    .form-group-inline .form-group {
+        flex: 1 1 23%; /* Flexibilidad y ancho mínimo */
+    }
+}
+
+/* Estilos para la línea de tiempo */
+.timeline {
+    display: flex; /* Utilizar flexbox */
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-bottom: 20px; /* Margen inferior */
+    list-style: none; /* Eliminar estilo de lista */
+    padding: 0; /* Eliminar relleno */
+}
+
+/* Estilos para los pasos de la línea de tiempo */
+.timeline-step {
+    position: relative; /* Posicionamiento relativo */
+    flex: 1; /* Flexibilidad */
+    text-align: center; /* Alineación centrada */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+/* Estilos para el número del paso */
+.timeline-step::before {
+    content: attr(data-step); /* Contenido basado en atributo */
+    display: inline-block; /* Mostrar como inline-block */
+    width: 30px; /* Ancho */
+    height: 30px; /* Altura */
+    border-radius: 50%; /* Bordes redondeados */
+    background-color: #ccc; /* Fondo gris */
+    color: #fff; /* Texto blanco */
+    line-height: 30px; /* Altura de línea */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos para el paso activo */
+.timeline-step.active::before {
+    background-color: #007bff; /* Fondo azul */
+}
+
+/* Estilos para la línea entre pasos */
+.timeline-step::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 15px; /* Posición superior */
+    right: -50%; /* Posición derecha */
+    width: 100%; /* Ancho completo */
+    height: 2px; /* Altura */
+    background-color: #ccc; /* Fondo gris */
+    z-index: -1; /* Colocar detrás */
+}
+
+/* Eliminar la línea después del último paso */
+.timeline-step:last-child::after {
+    display: none; /* No mostrar */
+}
+
+/* Estilos para la cuadrícula */
+.grid {
+    display: flex; /* Utilizar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    gap: 20px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar elementos */
+}
+
+/* Estilos para los elementos de la cuadrícula */
+.grid-item {
+    padding: 20px; /* Relleno interno */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 150px; /* Ancho */
+    cursor: pointer; /* Cursor de puntero */
+    text-align: center; /* Alineación centrada */
+    transition: transform 0.2s; /* Transición suave para la transformación */
+    color: #fff; /* Texto blanco */
+    font-weight: 600; /* Peso de fuente */
+}
+
+/* Estilos para los elementos completados de la cuadrícula */
+.grid-item.complete {
+    background-color: #004085; /* Fondo azul oscuro */
+}
+
+/* Estilos para los elementos pendientes de la cuadrícula */
+.grid-item.pending {
+    background-color: #6c757d; /* Fondo gris apagado */
+}
+
+/* Estilos para el hover en los elementos de la cuadrícula */
+.grid-item:hover {
+    transform: scale(1.05); /* Escalar un poco al pasar el cursor */
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* No mostrar por defecto */
+    position: fixed; /* Posicionamiento fijo */
+    z-index: 1; /* Nivel de z para estar por encima de otros elementos */
+    padding-top: 60px; /* Espaciado superior */
+    left: 0; /* Alineado a la izquierda */
+    top: 0; /* Alineado en la parte superior */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Mostrar scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Fondo negro semi-transparente */
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: #fefefe; /* Fondo blanco */
+    margin: auto; /* Centrarse automáticamente */
+    padding: 50px; /* Relleno interno */
+    border: 1px solid #888; /* Borde gris */
+    width: 80%; /* Ancho del 80% */
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+    color: #aaa; /* Color gris claro */
+    float: right; /* Alinear a la derecha */
+    font-size: 28px; /* Tamaño de fuente grande */
+    font-weight: bold; /* Fuente en negrita */
+}
+
+/* Estilos para el hover y foco en el botón de cerrar */
+.close:hover,
+.close:focus {
+    color: black; /* Cambiar a negro */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cursor de puntero */
+}
+

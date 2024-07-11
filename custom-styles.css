@@ -1,0 +1,432 @@
+/* Importa la fuente SF Pro Display */
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap');
+
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'SF Pro Display', sans-serif; /* Fuente de Apple */
+    background-color: #f8f9fa; /* Color de fondo claro */
+    margin: 0; /* Eliminar margen predeterminado */
+    padding: 0; /* Eliminar relleno predeterminado */
+    display: flex; /* Utilizar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center;
+    min-height: 100vh; /* Altura mínima para ocupar toda la ventana */
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px; /* Relleno interno */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 1200px; /* Máximo ancho */
+    width: 100%; /* Ancho completo */
+    margin: 20px; /* Margen exterior */
+}
+
+/* Estilos para encabezados */
+h1, h2 {
+    font-size: 24px; /* Tamaño de fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Alinear al centro */
+    font-weight: 600; /* Negrita */
+    color: #004085; /* Color del texto */
+}
+
+/* Grid para los elementos */
+.grid {
+    display: flex; /* Usar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    gap: 20px; /* Espacio entre elementos */
+    justify-content: center; /* Centrar elementos */
+}
+
+/* Estilos para los elementos del grid */
+.grid-item {
+    padding: 20px; /* Relleno interno */
+    border-radius: 8px; /* Esquinas redondeadas */
+    width: 150px; /* Ancho fijo */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    text-align: center; /* Alinear texto al centro */
+    transition: transform 0.2s; /* Transición suave */
+    color: #fff; /* Color del texto */
+    font-weight: 600; /* Negrita */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de los elementos hijos */
+    align-items: center; /* Alinear hijos al centro */
+    justify-content: center; /* Centrar hijos verticalmente */
+    height: 120px; /* Altura fija */
+}
+
+/* Estilos para las imágenes dentro del grid */
+.grid-item img {
+    width: 40px; /* Ancho de la imagen */
+    height: 40px; /* Altura de la imagen */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos para los elementos completos */
+.grid-item.complete {
+    background-color: #004085; /* Azul corporativo */
+}
+
+/* Estilos para los elementos pendientes */
+.grid-item.pending {
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #000000; /* Fuente de color negra */
+    border: 1px solid #000000; /* Borde negro */
+}
+
+/* Efecto hover para los elementos del grid */
+.grid-item:hover {
+    transform: scale(1.05); /* Escalar un poco al pasar el cursor */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .grid-item {
+        width: 100%; /* Ancho completo */
+        height: auto; /* Altura automática */
+        flex-direction: row; /* Cambiar dirección a fila */
+        justify-content: flex-start; /* Justificar al inicio */
+        padding: 10px; /* Relleno interno */
+    }
+
+    .grid-item img {
+        margin-right: 10px; /* Margen derecho */
+    }
+}
+
+/* Estilos para los campos de entrada */
+.form-group input, .form-group select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Relleno interno */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 20px; /* Bordes ovalados */
+    box-sizing: border-box; /* Incluir borde en el ancho total */
+    transition: border-color 0.3s ease; /* Transición suave */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+}
+
+/* Efecto al enfocar los campos de entrada */
+.form-group input:focus, .form-group select:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+}
+
+/* Resaltar campos requeridos no completados */
+input:required:invalid {
+    border-color: red; /* Color del borde rojo */
+    background-color: rgba(255, 0, 0, 0.05); /* Fondo rojo claro */
+}
+
+/* Resaltar campos select requeridos no completados */
+select:required:invalid {
+    border-color: red; /* Color del borde rojo */
+    background-color: rgba(255, 0, 0, 0.05); /* Fondo rojo claro */
+}
+
+/* Ajuste de tooltips */
+.tooltip {
+    display: none; /* No mostrar por defecto */
+    background-color: #fdC304; /* Fondo amarillo */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Relleno interno */
+    position: absolute; /* Posicionamiento absoluto */
+    z-index: 1000; /* Nivel de z alto */
+    width: 250px; /* Ancho fijo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    left: 0%; /* Alineado a la izquierda */
+    top: -70%; /* Posicionado arriba */
+    transform: translate(10px, -50%); /* Trasladar para centrar */
+    white-space: normal; /* Permitir espacios en blanco normales */
+}
+
+/* Estilos responsivos para tooltips en pantallas pequeñas */
+@media (max-width: 768px) {
+    .tooltip {
+        left: 50%; /* Alinear al centro */
+        transform: translate(-50%, -110%); /* Ajustar posición */
+        width: 90%; /* Ancho casi completo */
+    }
+}
+
+/* Mejorar el espaciado entre los campos de entrada */
+.form-group {
+    margin-bottom: 20px; /* Espaciado inferior */
+    position: relative; /* Posicionamiento relativo */
+}
+
+label {
+    display: block; /* Mostrar como bloque */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+input[type="text"], select, button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Relleno interno */
+    box-sizing: border-box; /* Incluir borde en el ancho total */
+}
+
+button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px; /* Relleno interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+/* Efecto hover para botones */
+button:hover {
+    background-color: #0056b3; /* Color de fondo azul oscuro */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 15px; /* Ajusta este margen para mejorar el espaciado en dispositivos móviles */
+    }
+}
+
+/* Ajuste para resaltar campos */
+.form-group.resaltado input {
+    border: 2px solid #004085; /* Borde azul oscuro */
+    background-color: rgba(0, 64, 133, 0.05); /* Fondo azul claro */
+    font-weight: bold; /* Fuente en negrita */
+    text-transform: lowercase !important; /* Convertir el texto a minúsculas con prioridad */
+}
+
+/* Contenedor relativo para el tooltip */
+.form-group.resaltado {
+    position: relative; /* Posicionamiento relativo */
+}
+
+/* Estilos para las etiquetas de los botones de radio */
+.radio-group label {
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    gap: 10px; /* Espacio entre el círculo y el texto */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+/* Oculta los botones de radio originales */
+.radio-group input[type="radio"] {
+    display: none; /* No mostrar por defecto */
+}
+
+/* Estilos para el span que sustituye al botón de radio */
+.radio-group input[type="radio"] + span {
+    display: inline-block; /* Mostrar como bloque en línea */
+    width: 20px; /* Ancho fijo */
+    height: 20px; /* Altura fija */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 50%; /* Bordes redondeados */
+    position: relative; /* Posicionamiento relativo */
+}
+
+/* Estilos para el span cuando el botón de radio está seleccionado */
+.radio-group input[type="radio"]:checked + span::before {
+    content: ''; /* Sin contenido */
+    display: block; /* Mostrar como bloque */
+    width: 12px; /* Ancho fijo */
+        height: 12px; /* Altura fija */
+    background-color: #007bff; /* Fondo azul */
+    border-radius: 50%; /* Bordes redondeados */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Alinear al centro verticalmente */
+    left: 50%; /* Alinear al centro horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar dentro del borde */
+}
+
+/* Asegurar que el span esté alineado correctamente */
+.radio-group span::before {
+    content: ''; /* Sin contenido */
+    display: block; /* Mostrar como bloque */
+    width: 12px; /* Ancho fijo */
+    height: 12px; /* Altura fija */
+    border-radius: 50%; /* Bordes redondeados */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Alinear al centro verticalmente */
+    left: 50%; /* Alinear al centro horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar dentro del borde */
+}
+
+/* Estilos para los botones */
+.btn {
+    display: inline-block; /* Mostrar como bloque en línea */
+    padding: 10px 20px; /* Relleno interno */
+    background-color: #007bff; /* Color de fondo azul */
+    color: #ffffff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    text-align: center; /* Alinear texto al centro */
+    font-weight: 600; /* Negrita */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efecto hover para los botones */
+.btn:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Eleva el botón al pasar el mouse */
+}
+
+/* Efecto activo para los botones */
+.btn:active {
+    background-color: #003d7a; /* Cambia el color de fondo al hacer clic */
+    transform: translateY(0); /* Elimina la elevación al hacer clic */
+}
+
+/* Estilos para el contenedor de los botones */
+.nav-buttons {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espacio entre botones */
+    margin-top: 20px; /* Margen superior */
+    gap: 10px; /* Espacio entre botones */
+}
+
+/* Estilos responsivos para los botones */
+@media (max-width: 768px) {
+    .btn {
+        width: 100%; /* Ancho completo */
+        margin: 10px 0; /* Margen vertical */
+    }
+
+    .nav-buttons {
+        flex-direction: column; /* Dirección vertical */
+        align-items: center; /* Alinear elementos al centro */
+    }
+}
+
+/* Estilos para la línea de tiempo */
+.timeline {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espacio entre pasos */
+    margin-bottom: 20px; /* Margen inferior */
+    list-style: none; /* Sin estilo de lista */
+    padding: 0; /* Sin relleno */
+}
+
+/* Estilos para los pasos de la línea de tiempo */
+.timeline-step {
+    position: relative; /* Posicionamiento relativo */
+    flex: 1; /* Flexibilidad */
+    text-align: center; /* Alinear texto al centro */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    color: #6c757d; /* Color del texto */
+}
+
+/* Estilos para los círculos de la línea de tiempo */
+.timeline-step::before {
+    content: attr(data-step); /* Mostrar el número de paso */
+    display: inline-block; /* Mostrar como bloque en línea */
+    width: 30px; /* Ancho fijo */
+    height: 30px; /* Altura fija */
+    border-radius: 50%; /* Bordes redondeados */
+    background-color: #ccc; /* Fondo gris */
+    color: #fff; /* Color del texto */
+    line-height: 30px; /* Altura de línea */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos para los círculos activos */
+.timeline-step.active::before {
+    background-color: #003366; /* Fondo azul oscuro */
+}
+
+/* Estilos para los pasos activos */
+.timeline-step.active {
+    color: #007bff; /* Color del texto azul */
+}
+
+/* Estilos para las líneas entre los pasos */
+.timeline-step::after {
+    content: ''; /* Sin contenido */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 15px; /* Alinear al centro verticalmente */
+    right: -50%; /* Alinear a la derecha */
+    width: 100%; /* Ancho completo */
+    height: 2px; /* Altura fija */
+    background-color: #ccc; /* Fondo gris */
+    z-index: -1; /* Enviar al fondo */
+}
+
+/* Oculta la última línea */
+.timeline-step:last-child::after {
+    display: none; /* No mostrar */
+}
+
+/* Autocompletar departamento y ciudad */
+.autocomplete {
+    position: relative; /* Posicionamiento relativo */
+    display: inline-block; /* Mostrar como bloque en línea */
+}
+
+/* Estilos para los elementos del autocompletar */
+.autocomplete-items {
+    position: absolute; /* Posicionamiento absoluto */
+    border: 1px solid #d4d4d4; /* Borde gris */
+    border-bottom: none; /* Sin borde inferior */
+    border-top: none; /* Sin borde superior */
+    z-index: 99; /* Nivel de z alto */
+    top: 100%; /* Posicionar debajo */
+    left: 0; /* Alinear a la izquierda */
+    right: 0; /* Alinear a la derecha */
+}
+
+/* Estilos para los elementos individuales del autocompletar */
+.autocomplete-items div {
+    padding: 10px; /* Relleno interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    background-color: #fff; /* Fondo blanco */
+    border-bottom: 1px solid #d4d4d4; /* Borde inferior gris */
+}
+
+/* Efecto hover para los elementos individuales del autocompletar */
+.autocomplete-items div:hover {
+    background-color: #e9e9e9; /* Fondo gris claro */
+}
+
+/* Estilo para el elemento activo del autocompletar */
+.autocomplete-active {
+    background-color: DodgerBlue !important; /* Fondo azul */
+    color: #ffffff; /* Color del texto blanco */
+}
+
+/* Estilos para el popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

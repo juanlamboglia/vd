@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinculación Digital - Navegación</title>
+    <link rel="stylesheet" href="custom-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Vinculación y Actualización de Datos</h1>
+        <h2>Persona Natural</h2>
+        <div class="grid">
+            <div class="grid-item pending" onclick="navigateTo('section-1')">
+                <img src="basicos1.svg" data-pending-src="basicos1.svg" data-completed-src="basicos2.svg" alt="Ícono de Información Básica">
+                <span>1. Información básica</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-2')">
+                <img src="financiero1.svg" data-pending-src="financiero1.svg" data-completed-src="financiero2.svg" alt="Ícono de Información Financiera">
+                <span>2. Información financiera</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-3')">
+                <img src="perfil1.svg" data-pending-src="perfil1.svg" data-completed-src="perfil2.svg" alt="Ícono de Perfil del Cliente">
+                <span>3. Perfil del cliente</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-4')">
+                <img src="listas1.svg" data-pending-src="listas1.svg" data-completed-src="listas2.svg" alt="Ícono de Información PEP, FATCA y CRS">
+                <span>4. Información PEP, FATCA y CRS</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-5')">
+                <img src="bancos1.svg" data-pending-src="bancos1.svg" data-completed-src="bancos2.svg" alt="Ícono de Cuentas Bancarias">
+                <span>5. Cuentas bancarias</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-6')">
+                <img src="fics1.svg" data-pending-src="fics1.svg" data-completed-src="fics2.svg" alt="Ícono de Fondos de Inversión">
+                <span>6. Fondos de inversión</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-7')">
+                <img src="ordenante1.svg" data-pending-src="ordenante1.svg" data-completed-src="ordenante2.svg" alt="Ícono de Registro de Ordenantes">
+                <span>7. Registro de ordenantes</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-8')">
+                <img src="contrato1.svg" data-pending-src="contrato1.svg" data-completed-src="contrato2.svg" alt="Ícono de Términos y Contratos">
+                <span>8. Términos y contratos</span>
+            </div>
+            <div class="grid-item pending" onclick="navigateTo('section-9')">
+                <img src="firma1.svg" data-pending-src="firma1.svg" data-completed-src="firma2.svg" alt="Ícono de Firmar">
+                <span>9. Firmar</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigateTo(section) {
+            window.location.href = section + '.html';
+        }
+
+        function checkCompletion() {
+            const completedSections = JSON.parse(localStorage.getItem('completedSections')) || [];
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach(item => {
+                const section = item.getAttribute('onclick').match(/'([^']+)'/)[1];
+                const img = item.querySelector('img');
+
+                if (completedSections.includes(section)) {
+                    item.classList.remove('pending');
+                    item.classList.add('complete');
+                    // Cambiar el ícono a la versión completada
+                    img.setAttribute('src', img.getAttribute('data-completed-src'));
+                } else {
+                    item.classList.remove('complete');
+                    item.classList.add('pending');
+                    // Asegurar que el ícono esté en la versión pendiente
+                    img.setAttribute('src', img.getAttribute('data-pending-src'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', checkCompletion);
+    </script>
+</body>
+</html>

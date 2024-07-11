@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinculación Digital - Información Básica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="custom-styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Información Básica</h1>
+        <ul class="timeline">
+            <li class="timeline-step active" data-step="1" onclick="attemptNavigateToSection('section-1')"></li>
+            <li class="timeline-step" data-step="2" onclick="attemptNavigateToSection('section-2')"></li>
+            <li class="timeline-step" data-step="3" onclick="attemptNavigateToSection('section-3')"></li>
+            <li class="timeline-step" data-step="4" onclick="attemptNavigateToSection('section-4')"></li>
+            <li class="timeline-step" data-step="5" onclick="attemptNavigateToSection('section-5')"></li>
+            <li class="timeline-step" data-step="6" onclick="attemptNavigateToSection('section-6')"></li>
+            <li class="timeline-step" data-step="7" onclick="attemptNavigateToSection('section-7')"></li>
+            <li class="timeline-step" data-step="8" onclick="attemptNavigateToSection('section-8')"></li>
+            <li class="timeline-step" data-step="9" onclick="attemptNavigateToSection('section-9')"></li>
+        </ul>
+        <form id="vinculacion-form" onsubmit="saveData(event)">
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="primer-apellido">Primer Apellido*</label>
+                    <input type="text" id="primer-apellido" name="primer-apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="segundo-apellido">Segundo Apellido</label>
+                    <input type="text" id="segundo-apellido" name="segundo-apellido">
+                </div>
+                <div class="form-group">
+                    <label for="primer-nombre">Primer Nombre</label>
+                    <input type="text" id="primer-nombre" name="primer-nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="segundo-nombre">Segundo Nombre</label>
+                    <input type="text" id="segundo-nombre" name="segundo-nombre">
+                </div>
+                <div class="form-group">
+                    <label for="tipo-id">Tipo de Identificación</label>
+                    <select id="tipo-id" name="tipo-id" required>
+			<option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="NIUP">NIUP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numero-id">Número de Identificación</label>
+                    <input type="text" id="numero-id" name="numero-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha-expedicion-id">Fecha de Expedición Documento</label>
+                    <input type="date" id="fecha-expedicion-id" name="fecha-expedicion-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="nacionalidad">Nacionalidad</label>
+                    <input type="text" id="nacionalidad" name="nacionalidad" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                </div>
+                <div class="form-group">
+                    <label for="lugar-nacimiento">Lugar de Nacimiento</label>
+                    <input type="text" id="lugar-nacimiento" name="lugar-nacimiento" required>
+                </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <select id="sexo" name="sexo" required>
+			<option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="No Binario">No Binario</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estado-civil">Estado Civil</label>
+                    <select id="estado-civil" name="estado-civil" required>
+			<option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Soltero">Soltero</option>
+                        <option value="Unión libre">Unión libre</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Viudo">Viudo</option>
+                        <option value="Separado">Separado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nivel-estudios">Nivel de Educación</label>
+                    <select id="nivel-estudios" name="nivel-estudios" required>
+			<option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Sin Estudios">Sin Estudios</option>
+                        <option value="Básico">Básico</option>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Tecnólogo">Tecnólogo</option>
+                        <option value="Profesional">Profesional</option>
+                        <option value="Posgrado">Posgrado</option>
+                        <option value="Especialización">Especialización</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="profesion">Profesión</label>
+                    <input type="text" id="profesion" name="profesion" required>
+                </div>
+                <div class="form-group resaltado">
+                    <label for="celular">Celular Autorizado*</label>
+                    <input type="tel" id="celular" name="celular" pattern="[0-9]{10}" required onfocus="showTooltip('celular')" onblur="hideTooltip('celular')">
+                    <div id="tooltip-celular" class="tooltip">Este campo será utilizado para emitir cualquier tipo de instrucción a la firma comisionista.</div>
+		    
+                </div>
+                <div class="form-group resaltado">
+                    <label for="correo">Correo Electrónico Autorizado*</label>
+                    <input type="email" id="correo" name="correo" required onfocus="showTooltip('correo')" onblur="hideTooltip('correo')">
+                    <div id="tooltip-correo" class="tooltip">Este campo será utilizado para emitir cualquier tipo de instrucción a la firma comisionista.</div>
+                </div>
+                <div class="form-group">
+                    <label for="pais-residencia">País de Residencia</label>
+                    <input list="paises" id="pais-residencia" name="pais-residencia" required>
+                    <datalist id="paises"></datalist>
+                </div>
+                <div class="form-group autocomplete">
+                    <label for="depto-residencia">Departamento de Residencia</label>
+                    <input id="depto-residencia" list="departamentos" name="depto-residencia" required>
+                    <datalist id="departamentos">
+                        <!-- Opciones de departamentos se añadirán aquí dinámicamente -->
+                    </datalist>
+                </div>
+                <div class="form-group autocomplete">
+                    <label for="ciudad-residencia">Ciudad de Residencia</label>
+                    <input id="ciudad-residencia" list="ciudades" name="ciudad-residencia" required>
+                    <datalist id="ciudades">
+                        <!-- Opciones de municipios se añadirán aquí dinámicamente -->
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="direccion-residencia">Dirección de Residencia</label>
+                    <input type="text" id="direccion-residencia" name="direccion-residencia" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono-residencia">Teléfono de Residencia</label>
+                    <input type="tel" id="telefono-residencia" name="telefono-residencia" pattern="[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label for="ocupacion">Ocupación</label>
+                    <select id="ocupacion" name="ocupacion" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Empleado">Empleado</option>
+                        <option value="Pensionado">Pensionado</option>
+                        <option value="Estudiante">Estudiante</option>
+                        <option value="Ama de casa">Ama de casa</option>
+                        <option value="Independiente">Independiente</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group" id="ocupacion-otra" style="display:none;">
+                    <label for="ocupacion-otra-text">Otra Ocupación, ¿Cuál?</label>
+                    <input type="text" id="ocupacion-otra-text" name="ocupacion-otra-text">
+                </div>
+                <div class="form-group-inline" id="datos-laborales" style="display:none;">
+                    <h3>Datos Laborales</h3>
+                    <div class="form-group autocomplete">
+                        <label for="depto-laboral">Departamento Laboral</label>
+                        <input id="depto-laboral" list="departamentos-laborales" name="depto-laboral">
+                        <datalist id="departamentos-laborales"></datalist>
+                    </div>
+                    <div class="form-group autocomplete">
+                        <label for="ciudad-laboral">Ciudad Laboral</label>
+                        <input id="ciudad-laboral" list="ciudades-laborales" name="ciudad-laboral">
+                        <datalist id="ciudades-laborales"></datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion-laboral">Dirección Laboral</label>
+                        <input type="text" id="direccion-laboral" name="direccion-laboral">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono-laboral">Teléfono Laboral</label>
+                        <input type="tel" id="telefono-laboral" name="telefono-laboral" pattern="[0-9]{10}">
+                    </div>
+                </div>
+                <div class="form-group-inline" id="actividad-independiente" style="display:none;">
+                    <h3>Datos de Actividad Independiente</h3>
+                    <div class="form-group">
+                        <label for="actividad-economica">Actividad Económica</label>
+                        <select id="actividad-economica" name="actividad-economica">
+                            <option value="Rentista de capital">Rentista de capital</option>
+                            <option value="Profesional independiente">Profesional independiente</option>
+                            <option value="Técnico independiente">Técnico independiente</option>
+                            <option value="Transportador">Transportador</option>
+                            <option value="Actividades agropecuarias">Actividades agropecuarias</option>
+                            <option value="Comerciante">Comerciante</option>
+                            <option value="Servidor público">Servidor público</option>
+                            <option value="Religioso">Religioso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tiempo-actividad">Tiempo de actividad en años:</label>
+                        <input type="text" id="tiempo-actividad" name="tiempo-actividad">
+                    </div>
+                    <div class="form-group autocomplete">
+                        <label for="codigo-ciiu">Código CIIU</label>
+    			<input id="codigo-ciiu" list="ciiu-codes" name="codigo-ciiu">
+    			<datalist id="ciiu-codes"></datalist>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>¿Tiene algún tipo de relación familiar, civil o de afinidad con algún funcionario de Global Securities S.A.?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="afinidad-gsc" value="si" required onclick="toggleAfinidad(true)"> <span></span>Sí
+                        </label>
+                        <label>
+                            <input type="radio" name="afinidad-gsc" value="no" required onclick="toggleAfinidad(false)"> <span></span>No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" id="afinidad-si" style="display: none;">
+                    <div class="form-group">
+                        <label for="parentesco">Parentesco</label>
+                        <select id="parentesco" name="parentesco">
+                            <option value="Amigo">Amigo</option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Esposo(a)">Esposo(a)</option>
+                            <option value="Hijo(a)">Hijo(a)</option>
+                            <option value="Proveedor">Proveedor</option>
+                            <option value="Comercial">Comercial</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre-funcionario">Nombre del Funcionario</label>
+                        <input type="text" id="nombre-funcionario" name="nombre-funcionario">
+                    </div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+
+                <button type="button" class="btn" onclick="navigateToSection('index')">Inicio</button>
+                <button type="button" class="btn" onclick="attemptNavigateToSection('section-2')">Siguiente</button>
+                <button type="submit" class="btn">Guardar</button>
+            </div>
+        </form>
+    </div>
+    
+    <script src="colombia.js"></script>
+    <script src="ciiu.js"></script>
+    <script src="section-1.js"></script>
+    
+</body>
+</html>
