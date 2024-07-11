@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vinculación Digital - Información Económica y Financiera</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="custom-styles.css">
@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Información Económica y Financiera</h1>
         <ul class="timeline">
-            <li class="timeline-step" data-step="1" onclick="attemptNavigateToSection('section-1')"></li>
+            <li class="timeline-step active" data-step="1" onclick="attemptNavigateToSection('section-1')"></li>
             <li class="timeline-step active" data-step="2" onclick="attemptNavigateToSection('section-2')"></li>
             <li class="timeline-step" data-step="3" onclick="attemptNavigateToSection('section-3')"></li>
             <li class="timeline-step" data-step="4" onclick="attemptNavigateToSection('section-4')"></li>
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div class="nav-buttons">
-                <button type="button" class="btn" onclick="attemptNavigateToSection('index')">Inicio</button>
+                <button type="button" class="btn" onclick="navigateToSection('index')">Inicio</button>
                 <button type="button" class="btn" onclick="attemptNavigateToSection('section-1')">Volver</button>
                 <button type="submit" class="btn">Guardar</button>
             </div>
