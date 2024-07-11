@@ -269,3 +269,10 @@ h1, h2 {
     cursor: pointer; /* Cursor de puntero */
 }
 
+/* Evita el escalado de la página en dispositivos móviles */
+html, body {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
