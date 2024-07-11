@@ -105,7 +105,7 @@ h1, h2 {
     border-radius: 20px; /* Bordes ovalados */
     box-sizing: border-box; /* Incluir borde en el ancho total */
     transition: border-color 0.3s ease; /* Transición suave */
-    /*text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
 }
 
 /* Efecto al enfocar los campos de entrada */
