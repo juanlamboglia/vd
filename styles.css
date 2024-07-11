@@ -51,7 +51,7 @@ h1, h2 {
     border: 1px solid #ccc; /* Borde */
     border-radius: 4px; /* Bordes redondeados */
     box-sizing: border-box; /* Incluir borde y relleno en el ancho y alto */
-    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    /*text-transform: uppercase; /* Convertir el texto a mayúsculas */
 }
 
 /* Ajuste para resaltar campos */
